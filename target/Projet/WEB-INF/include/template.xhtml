@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Team Managment System</title>
+    <h:outputStylesheet name="/css/template.css"/>
+    <!-- Bootstrap core CSS -->
+    <h:outputStylesheet name="bootstrap-4.3.1-dist/css/bootstrap.min.css"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <f:verbatim>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    
+    </f:verbatim>
+<!--    Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <ui:insert name="head"/>
+  </h:head>
+
+  <h:body>
+      <ul class="nav nav-pills " style="flex-direction: column-reverse; flex-direction: row-reverse; justify-content: space-between">
+          <li class="nav-item">
+              <f:view locale="#{localeSwitch.locale}">
+                <h:form class=" m-3  ">
+                    <h:panelGrid class="nav-link active" columns="1"> 
+                        <h:selectOneMenu id="lang" class="nav-link active" style="cursor: pointer; border: none;" value="#{localeSwitch.language}" onchange="submit()"
+                          valueChangeListener="#{localeSwitch.localeChanged}">
+                           <f:selectItems value="#{localeSwitch.countries}" /> 
+                       </h:selectOneMenu>
+                    </h:panelGrid> 
+                </h:form>
+            </f:view>
+          </li>
+          <li>
+              <h:form class=" m-3"  >
+<!--                  <p class="text-center">#{msg.set2}</p>-->
+                  <h:outputText id="user" rendered="#{false}" class="card-title mt-3 text-center" style="text-transform: uppercase" value="#{sessionScope.User.userId}"/>
+                 </h:form>
+          </li>
+          <li class="nav-item">
+              
+                    <h:form class=" m-3"  >
+                        <h:commandButton  class="nav-link active"  value="#{msg.btnLogout}" type="command"  action="#{loginBean.logout}"> 
+                        </h:commandButton> 
+                    </h:form>
+          </li>
+      </ul>
+    <ui:insert name="body"/>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <h:outputScript name="bootstrap-4.3.1-dist/js/bootstrap.min.js"/>
+  </h:body>
+</html>

@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2019-11-01, 22:57:00
+    Author     : valentinmagot
+*/
+
+body,html{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*buton*/
+.btn-register {
+    cursor: pointer;
+}
+
+.input-group-prepend {
+  width : 15%; /*adjust as needed*/
+}
+
+.input-group-prepend span {
+  width: 100%;
+  overflow: hidden;
+}

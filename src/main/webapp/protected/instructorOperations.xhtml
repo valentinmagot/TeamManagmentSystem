@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/include/template.xhtml">
+
+            <ui:define name="head">
+                <Title>Instructor Operation</Title>
+                <h:outputStylesheet name ="css/instructorOperations.css" />
+            </ui:define>
+
+            <ui:define name="body">
+                 <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="card bg-light shadow">
+                        <article class="card-body mx-auto" style="max-width: 600px;">
+                            <h3 class="card-title mt-3 text-center">#{msg.insChoice1} #{sessionScope.User.firstname}</h3>
+                            <p class="text-center">#{msg.choice2}</p>
+                        <a class="btn-teamParameters btn btn-block btn-primary" href="/Projet/faces/protected/setUpTeamParameters.xhtml" style="color: #fff">#{msg.btnTeamOp}</a>
+                        <a class="btn-visulizeTeam btn btn-block btn-primary" href="/Projet/faces/protected/visualizeTeams.xhtml"   style="color: #fff">#{msg.btnVisulizeTeams}</a>
+                        </article>
+                        
+                       </div> <!-- ./card -->
+                    </div>  
+                  </div> <!-- ./container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

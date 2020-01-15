@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/include/template.xhtml">
+
+            <ui:define name="head">
+                <h:head>
+                <title>Visulize Students Team</title>
+                <!-- Custom styles for this template -->
+                <h:outputStylesheet name="/css/visualize.css"/>
+            </h:head>
+            </ui:define>
+
+            <ui:define name="body">
+                  <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="card bg-light shadow" style="max-height: 400px; overflow:  scroll">
+                        <article class="card-body mx-auto" style="max-width: 800px;">
+                             <h3 class="card-title mt-3 text-center">#{msg.req1}</h3>
+                            <p class="text-center">#{msg.visualize2}</p>
+                            
+                            <f:view>
+                            <h:form style="display: flex;" class="justify-content-center">
+                                <h:column><h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{visualizeTeamBean.status}"/></h:column>
+                                
+                                <h:dataTable  cellpadding="10pt"  value="#{visualizeTeamBean.req}" var="r">
+                                    <h:column>
+                                        
+                                        <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                      <div class="d-flex w-100 justify-content-between">
+                                          <h5 class="mb-1" >#{r.course}</h5>
+                                          <small>#{r.teamId}</small>  
+                                      </div>
+                                        <h6 class="mb-1" >#{r.userId}</h6>
+                                        <p class="mb-1">#{msg.req2}</p>
+                                        <h:commandButton class="btn-login btn btn-block btn-primary"  value="Select" type="command" actionListener="#{visualizeTeamBean.addUserToTeam}" >
+                                                <f:attribute name="action" value="#{team.id}" />
+                                                <f:attribute name="action3" value="#{team.code}" />
+                                          </h:commandButton>
+                                    </a>
+                                 </div>
+                                    </h:column>
+                                </h:dataTable>
+                                
+                                 
+                            </h:form>
+                        </f:view>
+        <!--                        <a class="btn-login btn btn-block btn-primary" style="color: #fff">#{msg.btnLogin}</a>-->
+                        </article>
+                       </div> <!-- ./card -->
+                    </div>  
+                  </div> <!-- ./container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+
+    <body>
+
+        <ui:composition template="./WEB-INF/include/template.xhtml">
+
+            <ui:define name="head">
+                <h:head>
+                <title>Welcome</title>
+                <!-- Custom styles for this template -->
+                <h:outputStylesheet name="/css/main.css"/>
+            </h:head>
+            </ui:define>
+
+            <ui:define name="body">
+                  <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="card bg-light shadow">
+                        <article class="card-body mx-auto" style="max-width: 400px;">
+                             <h3 class="card-title mt-3 text-center">#{msg.greeting1}</h3>
+                            <p class="text-center">#{msg.greeting2}</p>
+                            <a href="/Projet/faces/createAccount.xhtml" class="btn-register btn btn-block btn-outline-primary" >#{msg.btnRegister}</a>
+                            <p class="divider-text">
+                                <span class="bg-light">#{msg.ou}</span>
+                            </p>
+                            <f:view>
+                        <h:form>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-id-card"></i></span>
+                                    </div>
+<!--                                    <input id="id"  class="form-control" placeholder="#{msg.userID}" type="text" />-->
+                                    <h:inputText id="id" class="form-control" value="#{loginBean.userId}" a:placeholder="#{msg.userID}"  requiredMessage="#{msg.userID}"></h:inputText>
+                                </div>   <!-- ./form-group -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-lock"></i></span>
+                                    </div>
+<!--                                    <input id="passwd" name="password" class="form-control" placeholder="#{msg.password}" type="password" />-->
+                                    <h:inputSecret class="form-control"  id="passwd" a:placeholder="#{msg.password}" value="#{loginBean.password}">
+                                    </h:inputSecret>  
+                                </div>  <!-- ./form-group -->
+                                <h:commandButton class="btn-login btn btn-block btn-primary"  value="#{msg.btnLogin}" type="command" actionListener="#{loginBean.login}">
+                                    <f:ajax execute="id  passwd" 
+                                            render="status"/>
+                                     </h:commandButton>
+                                <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status"  value="#{loginBean.status}"/>
+                            </h:form> <!-- ./loginForm -->
+                        </f:view>
+<!--                        <a class="btn-login btn btn-block btn-primary" style="color: #fff">#{msg.btnLogin}</a>-->
+                        </article>
+                       </div> <!-- ./card -->
+                    </div>  
+                  </div> <!-- ./container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

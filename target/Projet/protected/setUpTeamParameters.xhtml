@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/include/template.xhtml">
+
+            <ui:define name="head">
+                <title>Set up Parameters</title>
+                <h:outputStylesheet name="css/setUpTeamParameters.css"/>
+            </ui:define>
+
+            <ui:define name="body">
+                 <div class="container h-100">
+                    <div class="row h-100 justify-content-center align-items-center">
+                        <div class="card bg-light shadow">
+                        <article class="card-body mx-auto" style="max-width: 600px;">
+                             <h3 class="card-title mt-3 text-center">#{msg.set1}</h3>
+                            <p class="text-center">#{msg.set2}</p>
+                       <f:view>
+                        <h:form>  
+                                 <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-key"></i></span>
+                                    </div>
+                                     <h:inputText id="code" class="form-control" value="#{setParametersBean.code}" a:placeholder="#{msg.courseCode}" ></h:inputText>
+                                     <h:message id="codeMsg" for="code" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                                </div> <!-- ./form-group -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-arrow-up"></i></span>
+                                    </div>
+                                  
+                                    <h:inputText id="max" class="form-control" value="#{setParametersBean.minNum}" a:placeholder="#{msg.minStuf}" ></h:inputText>
+                                    <h:message id="maxMsg" for="max" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                                </div> <!-- ./form-group -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-arrow-down"></i></span>
+                                    </div>
+                                    
+                                    <h:inputText id="min" class="form-control" value="#{setParametersBean.maxNum}" a:placeholder="#{msg.maxStud}" ></h:inputText>
+                                    <h:message id="minMsg" for="min" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                                </div> <!-- ./form-group -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text justify-content-center"><i class="fa fa-times-circle"></i></span>
+                                    </div>
+                                    <h:inputText id="deadline" class="form-control" value="#{setParametersBean.expirationDate}" a:placeholder="#{msg.deadeline}" ></h:inputText>
+                                    <h:message id="deadlineMsg" for="deadline" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                                </div>   <!-- ./form-group -->
+                                <h:commandButton value="Submit" class="btn-set btn btn-block btn-primary"  style="color: #fff" type="command" actionListener="#{setParametersBean.setParameters()}" >
+<!--                                    <f:ajax execute="ccode max min deadline" 
+                                     render="status ccodeMsg maxMsg minMsg deadlineMsg"/>-->
+                                 </h:commandButton>
+                                <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{setParametersBean.status}"/>
+                            </h:form> <!-- ./loginForm -->
+                        </f:view> 
+                        
+                        </article>
+                       </div> <!-- ./card -->
+                    </div>  
+                  </div> <!-- ./container -->
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
